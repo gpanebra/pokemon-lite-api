@@ -9,7 +9,7 @@ class PokemonsController < ApplicationController
   end
 
   def create
-    @pokemon = Pokemon.new(company_params)
+    @pokemon = Pokemon.new(pokemon_params)
     if @pokemon.save
       render json: @pokemon
     else
@@ -34,7 +34,7 @@ class PokemonsController < ApplicationController
 
   private
 
-  def company_params
+  def pokemon_params
     params.require(:pokemon).permit(:name, :base_experience, :main_type, :main_ability)
   end
 end
