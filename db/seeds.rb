@@ -18,7 +18,7 @@ csv.each do |row|
     name: row[:name],
     base_experience: row[:base_exp],
     main_type: row[:main_type],
-    main_ability: row[main_ability]
+    main_ability: row[:main_ability]
   )
 
   trainer = Trainer.find_or_create_by(
@@ -29,7 +29,7 @@ csv.each do |row|
     team_member_status: row[:t_team_member],
     wins: row[:wins],
     losses: row[:losses]
-  )
+  ).pokemons << pokemon
 
 end
 
