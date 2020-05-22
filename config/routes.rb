@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   get "/battlerecords", to: "battle_records#index"
   get "/battlerecords/:id", to: "battle_records#show"
   put "/battlerecords/:id", to: "battle_records#update"
+  delete "/battlerecords/:id", to: "battle_records#destroy"
   # TODO: add routes for battle records
 end

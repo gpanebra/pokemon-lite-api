@@ -19,8 +19,14 @@ class BattleRecordsController < ApplicationController
       render json: trainer.errors, status: :unprocessable_entity
     end
   end
-
+  
   # reset to 0
   def destroy
+    trainer = Trainer.find(params[:id])
+    if trainer.update({wins: 0, losses:0})
+      render json: trainer
+    else
+      render json: trainer.errors, status: :unprocessable_entity
+    end
   end
 end
