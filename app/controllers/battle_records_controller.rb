@@ -1,7 +1,6 @@
 class BattleRecordsController < ApplicationController
   def index
-    @trainers = Trainer.all
-    render json: { name: @trainers.name, wins: @trainers.wins, losses: @trainers.losses }
+    render json: Trainer.all.map{ |t| { name: t.name, wins: t.wins, losses: t.losses }}
   end
 
   def show
