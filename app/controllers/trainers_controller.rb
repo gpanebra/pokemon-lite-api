@@ -19,6 +19,12 @@ class TrainersController < ApplicationController
   end
 
   def update
+    @trainer = Trainer.find(params[:id])
+    if @trainer.update(params.require(:trainer).permit!)
+      render json: @trainer
+    else
+      render json: @trainer.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy

@@ -3,6 +3,8 @@ class BattleRecordsController < ApplicationController
   end
 
   def show
+    trainer = Trainer.find(params[:id])
+    render json: { wins: trainer.wins, losses: trainer.losses }
   end
 
   # def create

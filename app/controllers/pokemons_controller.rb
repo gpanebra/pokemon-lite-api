@@ -1,5 +1,6 @@
 class PokemonsController < ApplicationController
   def index
+    render json: Pokemon.all
   end
 
   def show
@@ -15,6 +16,12 @@ class PokemonsController < ApplicationController
   end
 
   def update
+    @pokemon = Pokemon.find(params[:id])
+    if @pokemon.update(params.require(:pokemon).permit!)
+      render json: @pokemon
+    else
+      render json: @pokemon.errors, status: :unprocessable_entity 
+    end
   end
 
   def destroy
